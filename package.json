@@ -1,0 +1,21 @@
+{
+  "name": "e-commerce-tech-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon ./src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/koa": "^2.13.6",
+    "koa": "^2.14.2"
+  }
+}
