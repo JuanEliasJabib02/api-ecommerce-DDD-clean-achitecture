@@ -4,6 +4,8 @@ import bodyParser, { Options } from 'koa-bodyparser';
 import json from "koa-json";
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
+import { GlobalErrorHandler } from './shared/middlewares/global-error-handler';
+import { GlobalRouter } from './shared/middlewares/global-router';
 //Init app
 const app = new Koa()
 
@@ -24,7 +26,12 @@ app.use(helmet());
 app.use(cors());
 
 
-//Routes
+//Global Router
+app.use(GlobalRouter);
+
+//Global Error Handler
+
+app.use(GlobalErrorHandler)
 
 
 export default app;

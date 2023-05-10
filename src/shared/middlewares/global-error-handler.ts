@@ -3,7 +3,7 @@ import { AppError } from '../exceptions/AppError';
 import logger from '../logger/logger';
 
 
-export const errorHandlerMiddleware = async (ctx: Context, next: () => Promise<any>) => {
+export const GlobalErrorHandler = async (ctx: Context, next: () => Promise<any>) => {
   try {
     await next();
   } catch (err: any) {
