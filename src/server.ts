@@ -1,7 +1,10 @@
-import app from "./config/koa-config";
+import app from "./app";
 
-const startServer = () => {
-  const port = process.env.PORT || 4001;
+
+
+
+const initServer = () => {
+  const port = process.env.PORT || 4000;
 
   app.listen(port, () => {
     console.log(`[APP] runinng in PORT:${port}`);
@@ -13,4 +16,4 @@ const startServer = () => {
 }
 
 
-startServer();
+initServer();
