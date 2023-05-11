@@ -1,16 +1,15 @@
-import { Context } from 'koa';
+import { Context, Next } from 'koa';
 
 export class HealthController {
-  async check(ctx: Context): Promise<void> {
-    console.log("Im here")
-    ctx.body = {
-      status: 'ok',
-      message: 'Service is healthy'
-    };
-  }
+  async check(ctx: Context, next: Next): Promise<void> {
+    try {
+      throw Error("PERRO GATO")
+      await next();
 
-  static resolve() {
-    return new HealthController();
-
+    } catch (error) {
+      console.log("down in the health controller catch error");
+      // Handle the error here or re-throw it to propagate it further
+      throw error;
+    }
   }
 }

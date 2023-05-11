@@ -8,12 +8,7 @@ const globalRouter = (app: Koa): Router.Middleware => {
   // Set up health routes
   HealthRoutes.setupRoutes(router, '/health');
 
-
-
-
-  app.use(router.allowedMethods());
   return router.routes()
-
 };
 
 export { globalRouter };
