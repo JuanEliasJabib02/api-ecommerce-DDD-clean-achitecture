@@ -1,19 +1,31 @@
-import { DefaultState, DefaultContext, Middleware, ParameterizedContext, Next } from 'koa';
-import { AppError } from '../../exceptions/AppError';
+import { Context } from "vm";
+import { DiscordNotification } from "./discord-notifications";
+import { Next } from "koa";
+import { AppError } from "../../exceptions/AppError";
 
-export const globalErrorHandler: Middleware<DefaultState, DefaultContext> = async (
-  ctx: ParameterizedContext<DefaultState, DefaultContext>,
-  next: Next
-): Promise<void> => {
+export async function GlobalErrorHandler(ctx: Context, next: Next) {
   try {
-    // Execute the next middleware or route handler
     await next();
   } catch (err: any) {
+
     if (err instanceof AppError) {
-      // If the error is an instance of AppError (operational error), handle it accordingly
-      console.log("2"); // Log "dog" for operational errors
+      /* Handle operationals errors for the client */
+      console.log("is operational")
+      ctx.status = err.statusCode || 500;
+      ctx.body = { error: err.message };
     } else {
-      console.log("3"); // Log "cat" for non-operational errors
+
+      // Monitoring non-operationals errors in discord the errors 
+      console.log("Non-operational error:", err);
+
+      const discordWebhookUrl = 'https://discord.com/api/webhooks/1106067217608605816/vWKUGDmZH4TKL80gDInmELL9sDqrAcrPH4sSPhEs0MnpNtLqjo_JgVBxCNctFdwAAmFr';
+      const discordNotification = new DiscordNotification(discordWebhookUrl);
+
+      await discordNotification.sendErrorNotification(err);
+      ctx.status = 500;
+      ctx.body = { error: 'Internal Server Error' };
+
     }
   }
-};
+}
+

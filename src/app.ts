@@ -8,6 +8,7 @@ import helmet from 'koa-helmet';
 
 import { globalRouter } from './shared/middlewares/global-router';
 import { globalContainer } from './shared/global-container';
+import { GlobalErrorHandler } from './shared/middlewares/global-error-handler/global-error-handler';
 
 //Init app
 const app = new Koa<DefaultState, DefaultContext>();
@@ -28,33 +29,12 @@ app.use(bodyParser({
 } as CustomBodyParserOptions));
 // Security Middlewares
 
-
-app.use(async (ctx, next) => {
-  try {
-    console.log("first middleware")
-    await next()
-  } catch (error) {
-
-  }
-});
-
-
 //Global Error Handler
 
-app.use(async (ctx, next) => {
-  try {
-    await next();
-    console.log("before the global error handler")
-  } catch (err: any) {
-    console.log("GLOBAL ERROR HANDLER", err.message)
-  }
-});
+app.use(GlobalErrorHandler);
 
 
 app.use(globalRouter(app))
-
-
-
 
 
 export default app;

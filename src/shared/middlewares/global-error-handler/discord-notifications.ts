@@ -8,9 +8,10 @@ export class DiscordNotification {
   }
 
   public async sendErrorNotification(errorDetails: any): Promise<void> {
-    const notificationMessage = `An error occurred:\n\`\`\`${JSON.stringify(errorDetails, null, 2)}\`\`\``;
+    const errorMessage = errorDetails instanceof Error ? errorDetails.stack || errorDetails.message : JSON.stringify(errorDetails, null, 2);
+    const notificationMessage = `An error occurred:\n\`\`\`${errorMessage}\`\`\``;
     const discordPayload = {
-      content: notificationMessage
+      content: notificationMessage,
     };
 
     try {
@@ -18,6 +19,7 @@ export class DiscordNotification {
       console.log('Error notification sent to Discord');
     } catch (error) {
       console.error('Failed to send error notification to Discord:', error);
+      throw error;
     }
   }
 }
