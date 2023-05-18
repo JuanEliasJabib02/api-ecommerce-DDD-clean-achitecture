@@ -7,14 +7,14 @@ export class InMemoryHealthRepository implements HealthRepository {
   private healthStatus: HealthStatus | null;
 
   constructor() {
-    this.healthStatus = null;
+    this.healthStatus = {
+      status: "ok",
+      "message": "app runinng good",
+      uptime: process.uptime()
+    };
   }
-
   public async getHealthStatus(): Promise<any> {
-    console.log("in the memory repository")
-
-
-
+    return this.healthStatus
   }
 
 }

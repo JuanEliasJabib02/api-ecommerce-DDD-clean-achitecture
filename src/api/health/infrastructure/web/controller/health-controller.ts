@@ -12,10 +12,10 @@ export class HealthController {
     try {
       const healthStatus = await this.healthService.checkHealth();
 
-      /* ctx.status = 200;
+      ctx.status = 200;
       ctx.body = {
         healthStatus,
-      }; */
+      };
     } catch (error) {
       // Re-throw the error to propagate it to the middleware stack and reach the global error handler
       throw error;

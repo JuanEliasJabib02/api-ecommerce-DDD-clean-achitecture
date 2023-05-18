@@ -4,16 +4,11 @@ import bodyParser, { Options } from 'koa-bodyparser';
 import json from "koa-json";
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
-import { globalRouterMiddleware } from './shared/middlewares/global-router';
+import { globalRouter } from './shared/middlewares/global-router';
 import { GlobalErrorHandler } from './shared/middlewares/global-error-handler/global-error-handler';
-
-
 
 //Init app
 const app = new Koa<DefaultState, DefaultContext>();
-
-
-
 
 //Middlewares
 interface CustomBodyParserOptions extends Options {
@@ -32,7 +27,7 @@ app.use(bodyParser({
 
 app.use(GlobalErrorHandler);
 
-app.use(globalRouterMiddleware())
+app.use(globalRouter())
 
 
 export default app;

@@ -1,11 +1,14 @@
-import { createContainer, asClass, InjectionMode } from 'awilix';
+import { createContainer, asClass, InjectionMode, asValue } from 'awilix';
 import { HealthController } from './web/controller/health-controller';
 import { HealthService } from '../domain/service/health-service';
 import { InMemoryHealthRepository } from './persistence/repositories/in-memory-health-repository';
+import { HealthStatus } from "../domain/model/health-status"
 
 const container = createContainer({
   injectionMode: InjectionMode.PROXY
 })
+
+
 
 
 container.register({
