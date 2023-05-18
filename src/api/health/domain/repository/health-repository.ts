@@ -1,14 +1,16 @@
-import { HealthStatus } from "../entity/health-status";
+import { HealthStatus } from "../model/health-status";
 
 export interface HealthRepository {
-  checkHealth(): Promise<HealthStatus>;
+  getHealthStatus(): Promise<HealthStatus>;
 }
 
 
-/* 
-2.
-Repository
-The repository is responsible for interacting with the data source, which could be a database, a file system, or an API. In the case of the HealthStatus service, you need to create a repository to store and retrieve the health status data.
 
-The repository should provide an interface that defines the methods for storing and retrieving data. This interface can be implemented by different repository classes, each of which can use a different data source.
+
+/**
+-A repository is a component responsible for handling data storage and retrieval in an application.
+-It provides a way to perform common database operations, such as creating, reading, updating, and deleting data.
+-By using a repository, the application can interact with data without having to know the specific details of how the data is stored or retrieved, promoting separation of concerns and easier maintenance.
+
+In summary, a repository acts as an abstraction layer between the application and the data storage, providing a standardized way to interact with data and hiding the implementation details of the underlying data persistence mechanism.
  */

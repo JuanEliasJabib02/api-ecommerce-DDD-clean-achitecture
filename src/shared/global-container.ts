@@ -1,10 +1,10 @@
-import { createContainer, Lifetime, asFunction } from 'awilix';
+import { createContainer, Lifetime, asFunction, InjectionMode } from 'awilix';
 import { AwilixContainer } from 'awilix/lib/container';
 
 const globalContainer: AwilixContainer = createContainer();
 
 globalContainer.loadModules([
-  '../api/*/infrastructure/container.ts'
+  "../api//health/*.ts"
 ], {
   formatName: 'camelCase',
   resolverOptions: {
@@ -12,6 +12,9 @@ globalContainer.loadModules([
     lifetime: Lifetime.SINGLETON
   }
 });
+
+console.log(globalContainer)
+
 
 
 export { globalContainer };
