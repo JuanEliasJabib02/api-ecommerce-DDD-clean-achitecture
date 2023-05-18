@@ -1,5 +1,5 @@
 
-import Koa, { DefaultState, DefaultContext, Next } from 'koa';
+import Koa, { DefaultState, DefaultContext } from 'koa';
 
 import bodyParser, { Options } from 'koa-bodyparser';
 import json from "koa-json";

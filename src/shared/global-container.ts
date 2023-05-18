@@ -1,6 +1,7 @@
 import { createContainer, Lifetime, asFunction } from 'awilix';
+import { AwilixContainer } from 'awilix/lib/container';
 
-const globalContainer = createContainer();
+const globalContainer: AwilixContainer = createContainer();
 
 globalContainer.loadModules([
   '../api/*/infrastructure/container.ts'

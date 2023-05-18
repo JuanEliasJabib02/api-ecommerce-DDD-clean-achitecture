@@ -1,4 +1,4 @@
-import { HealthStatus } from "../model/health-status";
+import { HealthStatus } from "../entity/health-status";
 
 export interface HealthRepository {
   checkHealth(): Promise<HealthStatus>;

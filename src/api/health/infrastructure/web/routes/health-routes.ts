@@ -10,5 +10,6 @@ export class HealthRoutes {
     const healthController = container.resolve<HealthController>('healthController');
 
     router.get(`${prefix}`, healthController.check);
+
   }
 }
