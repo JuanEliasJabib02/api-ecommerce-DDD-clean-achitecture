@@ -1,8 +1,6 @@
 import { HealthStatus } from "../../../domain/model/health-status";
 import { HealthRepository } from "../../../domain/repository/health-repository";
 
-
-
 export class InMemoryHealthRepository implements HealthRepository {
   private healthStatus: HealthStatus | null;
 

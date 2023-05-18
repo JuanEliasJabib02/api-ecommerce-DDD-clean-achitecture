@@ -1,7 +1,7 @@
-import { HealthStatus } from '../model/health-status';
-import { HealthRepository } from '../repository/health-repository';
+import { HealthStatus } from '../../domain/model/health-status';
+import { HealthRepository } from '../../domain/repository/health-repository';
 
-export class HealthService {
+export class HealthUseCases {
   private healthRepository: HealthRepository;
   constructor({ healthRepository }: { healthRepository: HealthRepository }) {
     this.healthRepository = healthRepository;
