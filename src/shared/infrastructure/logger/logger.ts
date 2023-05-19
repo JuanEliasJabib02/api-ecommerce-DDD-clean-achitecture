@@ -6,7 +6,7 @@ const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.json()
   ),
-  defaultMeta: { service: 'my-service' },
+  defaultMeta: { service: 'E-commerce-api' },
   transports: [
     new winston.transports.Console()
   ]

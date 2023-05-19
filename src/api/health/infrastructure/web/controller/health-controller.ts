@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import { CheckHealthUseCase } from '../../../application/usecases/check-health/check-health';
+import { CheckHealthUseCase } from '../../../application/usecases/check-health/check-health-usecase';
 
 export class HealthController {
   private checkHealthUseCase: CheckHealthUseCase;

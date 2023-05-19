@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon ./src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "db:migrate": "npx prisma migrate dev --schema ./src/database/schema.prisma",
+    "db:status": "npx prisma migrate status --schema ./src/database/schema.prisma"
   },
   "keywords": [],
   "author": "",
@@ -26,12 +28,14 @@
     "babel-jest": "^29.5.0",
     "dotenv": "^16.0.3",
     "jest": "^29.5.0",
+    "prisma": "^4.14.1",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
+    "@prisma/client": "^4.14.1",
     "awilix": "^8.0.1",
     "awilix-koa": "^9.0.0",
     "axios": "^1.4.0",

@@ -1,7 +1,8 @@
 import { Context } from "vm";
 import { DiscordNotification } from "./discord-notifications";
 import { Next } from "koa";
-import { AppError } from "../../exceptions/AppError";
+import { AppError } from "../../../application/AppError";
+
 
 export async function GlobalErrorHandler(ctx: Context, next: Next) {
   try {

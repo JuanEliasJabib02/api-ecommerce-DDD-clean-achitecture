@@ -3,9 +3,12 @@ import Koa, { DefaultState, DefaultContext } from 'koa';
 import bodyParser, { Options } from 'koa-bodyparser';
 import json from "koa-json";
 import cors from '@koa/cors';
+import { config as dotenvConfig } from 'dotenv';
+
 import helmet from 'koa-helmet';
-import { globalRouter } from './shared/middlewares/global-router';
-import { GlobalErrorHandler } from './shared/middlewares/global-error-handler/global-error-handler';
+
+import { GlobalErrorHandler } from './shared/infrastructure/middlewares/global-error-handler/global-error-handler';
+import { globalRouter } from './shared/infrastructure/middlewares/global-router';
 
 //Init app
 const app = new Koa<DefaultState, DefaultContext>();
@@ -15,18 +18,18 @@ interface CustomBodyParserOptions extends Options {
   urlencoded?: boolean;
 }
 
+dotenvConfig();
+
+
+// Security Middlewares
 app.use(helmet());
 app.use(cors());
 app.use(json());
 app.use(bodyParser({
   urlencoded: true
 } as CustomBodyParserOptions));
-// Security Middlewares
-
-//Global Error Handler
 
 app.use(GlobalErrorHandler);
-
 app.use(globalRouter())
 
 
