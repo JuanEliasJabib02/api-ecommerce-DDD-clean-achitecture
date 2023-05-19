@@ -4,6 +4,7 @@ This project will be public untill i develop the first half of the app for my po
 as a private repository for legal reasons, this is a project that i sell to a company.
 
 ## Database Diagram
+![image](https://github.com/JuanEliasJabib02/api-ecommerce-DDD-clean-achitecture/assets/95072028/cef94a1d-190d-4c81-8ec9-a82a714df344)
 
 ## Frameworks, libraries and platforms used.
 - Node.js
