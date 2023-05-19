@@ -5,7 +5,14 @@ as a private repository for legal reasons, this is a selled project.
 
 ## Database Diagram
 
-## Stack of the project.
+## Frameworks, libraries and platforms used.
+- Node.js
+- Koajs
+- PostgreSQL
+- Docker
+- Jest
+- Swagger
+- Prisma ORM
 
 ## Achitecture pattern
  DDD with Clean achitecture.
