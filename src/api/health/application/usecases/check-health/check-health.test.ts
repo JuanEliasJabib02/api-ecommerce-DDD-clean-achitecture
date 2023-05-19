@@ -64,8 +64,39 @@ describe("CheckHealthUseCase", () => {
     /* System under test */
     const sut = new CheckHealthUseCase({ healthRepository: mockHealthRepository });
 
+    let result;
+    try {
+      result = await sut.execute()
+    } catch (error) {
+      result = error
+    }
+
     // Act and Assert
-    await expect(sut.execute()).rejects.toThrowError(expected);
+    expect(result).toEqual(expected);
 
   });
+
+  test("should handle null or undefined health status", async () => {
+    // Arrange
+    const message = 'Invalid health status.';
+    const mockHealthRepository: HealthRepository = {
+      getHealthStatus: jest.fn().mockResolvedValue(null),
+    };
+
+    /* System under test */
+    const sut = new CheckHealthUseCase({ healthRepository: mockHealthRepository });
+
+    let result;
+    try {
+      result = await sut.execute();
+    } catch (error) {
+      result = error;
+    }
+
+
+    // Act and Assert
+    expect(result).toHaveProperty('message', message);
+
+  });
+
 });

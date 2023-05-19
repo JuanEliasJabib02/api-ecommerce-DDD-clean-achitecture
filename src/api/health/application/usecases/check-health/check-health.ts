@@ -12,9 +12,16 @@ export class CheckHealthUseCase {
   async execute(): Promise<HealthStatus> {
     try {
       const healthStatus = await this.healthRepository.getHealthStatus();
+
+      if (healthStatus === null || healthStatus === undefined) {
+        throw new HealthCheckError('Invalid health status.');
+      }
+
+
       return healthStatus;
-    } catch (error) {
-      throw new HealthCheckError('Unexpected error occurred');
+    } catch (error: any) {
+      const errMessage = error.message || 'Unexpected error occurred'
+      throw new HealthCheckError(errMessage);
     }
   }
 }

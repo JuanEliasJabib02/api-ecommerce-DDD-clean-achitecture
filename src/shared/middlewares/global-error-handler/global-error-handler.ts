@@ -13,7 +13,8 @@ export async function GlobalErrorHandler(ctx: Context, next: Next) {
       console.log("is operational")
       ctx.status = err.statusCode || 500;
       ctx.body = { error: err.message };
-    } else {
+    }
+    else {
 
       // Monitoring non-operationals errors in discord the errors 
       console.log("Non-operational error:", err);
