@@ -3,9 +3,9 @@
 This project will be public untill i develop the first half of the app for my portoflio, after i have to keep the development of the project
 as a private repository for legal reasons, this is a selled project.
 
-# Database Diagram
+## Database Diagram
 
-# Stack of the project.
+## Stack of the project.
 
-# Achitecture pattern
+## Achitecture pattern
  DDD with Clean achitecture.
