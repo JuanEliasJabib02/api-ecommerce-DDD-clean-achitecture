@@ -1,16 +1,16 @@
 import { Context, Next } from 'koa';
-import { HealthUseCases } from '../../../application/usecases/health-use-cases';
+import { CheckHealthUseCase } from '../../../application/usecases/check-health/check-health';
 
 export class HealthController {
-  private healthUseCases: HealthUseCases;
+  private checkHealthUseCase: CheckHealthUseCase;
 
-  constructor({ healthUseCases }: { healthUseCases: HealthUseCases }) {
-    this.healthUseCases = healthUseCases;
+  constructor({ checkHealthUseCase }: { checkHealthUseCase: CheckHealthUseCase }) {
+    this.checkHealthUseCase = checkHealthUseCase;
   }
 
   async check(ctx: Context, next: Next): Promise<void> {
     try {
-      const healthStatus = await this.healthUseCases.checkHealth();
+      const healthStatus = await this.checkHealthUseCase.execute();
 
       ctx.status = 200;
       ctx.body = {
