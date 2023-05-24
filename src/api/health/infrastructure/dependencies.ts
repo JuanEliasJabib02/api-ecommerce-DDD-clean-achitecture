@@ -1,7 +1,8 @@
 import { createContainer, asClass, InjectionMode } from 'awilix';
-import { HealthController } from '../controller/health-controller';
-import { InMemoryHealthRepository } from '../../persistence/repositories/in-memory-health-repository';
-import { CheckHealthUseCase } from '../../../application/usecases/check-health/check-health-usecase';
+import { HealthController } from './web/controller/health-controller';
+import { CheckHealthUseCase } from '../application/check-health-usecase';
+import { InMemoryHealthRepository } from './repositories/in-memory-health-repository';
+;
 
 const container = createContainer({
   injectionMode: InjectionMode.PROXY

@@ -7,8 +7,8 @@ import { config as dotenvConfig } from 'dotenv';
 
 import helmet from 'koa-helmet';
 
-import { GlobalErrorHandler } from './shared/infrastructure/middlewares/global-error-handler/global-error-handler';
-import { globalRouter } from './shared/infrastructure/middlewares/global-router';
+import { GlobalErrorHandler } from './middlewares/global-error-handler/global-error-handler';
+import { globalRouter } from './middlewares/global-router';
 
 //Init app
 const app = new Koa<DefaultState, DefaultContext>();

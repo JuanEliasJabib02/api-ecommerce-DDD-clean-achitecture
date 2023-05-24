@@ -1,7 +1,7 @@
-import { HealthStatus } from "../../domain/model/health-status";
-import { HealthRepository } from "../../domain/repository/health-repository";
-import { CheckHealthUseCase } from "../../application/usecases/check-health/check-health-usecase";
-import { HealthCheckError } from "../../application/usecases/check-health/errors/health-check-error";
+import { HealthStatus } from "../../domain/health-status-entity";
+import { HealthRepository } from "../../domain/health-repository";
+import { CheckHealthUseCase } from "../../application/check-health-usecase";
+import { HealthCheckError } from "../../domain/errors/health-check-error";
 
 describe("CheckHealthUseCase", () => {
 

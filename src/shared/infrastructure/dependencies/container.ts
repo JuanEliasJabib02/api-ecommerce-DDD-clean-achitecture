@@ -1,16 +1,16 @@
 import { createContainer, asClass, InjectionMode } from 'awilix';
-import PrismaClientProvider from '../../../database/db.connect';
 
+import Database from '../config/db-connect';
 const globalContainer = createContainer({
   injectionMode: InjectionMode.PROXY
 })
 
 globalContainer.register({
-  prismaClient: asClass(PrismaClientProvider).singleton()
+  database: asClass(Database).singleton()
 
 });
 
-export const prismaClient = globalContainer.resolve<PrismaClientProvider>("prismaClient")
+export const database = globalContainer.resolve<Database>("database")
 
 
 export default globalContainer

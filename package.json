@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce-tech-backend",
+  "name": "restapi-ecommerce",
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
@@ -11,7 +11,7 @@
     "db:status": "npx prisma migrate status --schema ./src/database/schema.prisma"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Elias Jabib",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.4",

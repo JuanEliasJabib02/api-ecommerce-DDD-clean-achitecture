@@ -1,8 +1,8 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
+CREATE TYPE "userRole" AS ENUM ('USER', 'ADMIN');
 
 -- CreateEnum
-CREATE TYPE "Status" AS ENUM ('ACTIVE', 'INACTIVE');
+CREATE TYPE "userStatus" AS ENUM ('ACTIVE', 'INACTIVE');
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -10,13 +10,15 @@ CREATE TABLE "User" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "role" "Role" NOT NULL DEFAULT 'USER',
-    "status" "Status" NOT NULL DEFAULT 'ACTIVE',
+    "role" "userRole" NOT NULL DEFAULT 'USER',
+    "status" "userStatus" NOT NULL DEFAULT 'ACTIVE',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateTable
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

@@ -12,22 +12,31 @@ datasource db {
 //Models
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String     @unique
   password  String
-  role      Role     @default(USER)
-  status    Status   @default(ACTIVE)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      userRole   @default(USER)
+  status    userStatus @default(ACTIVE)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 }
 
-enum Role {
+enum userRole {
   USER
   ADMIN
 }
 
-enum Status {
+enum userStatus {
   ACTIVE
   INACTIVE
+}
+
+model HealthStatus {
+  id        Int      @id @default(autoincrement())
+  status    String
+  message   String
+  uptime    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

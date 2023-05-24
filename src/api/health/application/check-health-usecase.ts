@@ -1,6 +1,6 @@
-import { HealthStatus } from '../../../domain/model/health-status';
-import { HealthRepository } from '../../../domain/repository/health-repository';
-import { HealthCheckError } from './errors/health-check-error';
+import { HealthStatus } from '../domain/health-status-entity';
+import { HealthRepository } from '../domain/health-repository';
+import { HealthCheckError } from '../domain/errors/health-check-error';
 
 export class CheckHealthUseCase {
   private healthRepository: HealthRepository;
