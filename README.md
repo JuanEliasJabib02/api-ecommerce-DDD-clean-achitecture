@@ -16,7 +16,7 @@ as a private repository for legal reasons, this is a project that i sell to a co
 - Prisma ORM
 
 ## Achitecture pattern
- DDD with Clean achitecture.
+Hexagonal Achitecture(Clean achitecture).
 
  ## Deploy
  Deploy was done in render

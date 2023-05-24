@@ -2,12 +2,11 @@
 import Database from "./shared/infrastructure/config/db-connect";
 import app from "./shared/infrastructure/app";
 import { database } from "./shared/infrastructure/dependencies/container";
-
 import logger from "./shared/infrastructure/utils/logger";
 
 const port: number = Number(process.env.PORT) || 4000;
 
-const initServer = async (port: number, prismaClient: Database): Promise<void> => {
+const initServer = async (port: number, database: Database): Promise<void> => {
 
   try {
 
@@ -19,7 +18,7 @@ const initServer = async (port: number, prismaClient: Database): Promise<void> =
     });
 
     process.on('SIGINT', async () => {
-      await prismaClient.disconnect();
+      await database.disconnect();
       server.close(() => {
         logger.info('[APP] Server closed');
         process.exit(0);
