@@ -11,7 +11,6 @@ export class HealthController {
   async check(ctx: Context, next: Next): Promise<void> {
     try {
       const healthStatus = await this.checkHealthUseCase.execute();
-
       ctx.status = 200;
       ctx.body = {
         healthStatus,
