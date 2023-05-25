@@ -1,7 +1,7 @@
 import { createContainer, asClass, InjectionMode } from 'awilix';
 import { HealthController } from './web/controller/health-controller';
 import { CheckHealthUseCase } from '../application/check-health-usecase';
-import { InMemoryHealthRepository } from './repositories/in-memory-health-repository';
+import { InMemoryHealthRepository } from './data-repositories/in-memory-health-repository';
 ;
 
 const container = createContainer({

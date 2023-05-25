@@ -1,0 +1,9 @@
+
+
+class SignupUseCase {
+
+  constructor() { }
+
+
+
+}
