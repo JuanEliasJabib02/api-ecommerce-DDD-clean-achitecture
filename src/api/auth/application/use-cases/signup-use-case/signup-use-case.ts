@@ -13,6 +13,7 @@ export class SignupUseCase {
   }
   async execute(data: any): Promise<UserEntity> {
     const user = this.authRepository.signup(data)
+
     /*    return user */
     return user
   }
