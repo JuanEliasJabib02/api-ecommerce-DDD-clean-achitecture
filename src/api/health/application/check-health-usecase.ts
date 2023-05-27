@@ -16,8 +16,6 @@ export class CheckHealthUseCase {
       if (healthStatus === null || healthStatus === undefined) {
         throw new HealthCheckError('Invalid health status.');
       }
-
-
       return healthStatus;
     } catch (error: any) {
       const errMessage = error.message || 'Unexpected error occurred'

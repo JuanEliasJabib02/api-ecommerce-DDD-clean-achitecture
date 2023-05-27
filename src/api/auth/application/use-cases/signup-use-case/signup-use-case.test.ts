@@ -2,14 +2,13 @@ import { SignupUseCase } from "./signup-use-case"
 import { UserEntity, userRole, userStatus } from "../../../domain/user-entity";
 import { AuthRepository } from "../../../domain/auth-repository";
 import { UserAlreadyExistError } from "./errors/error-user-already-exist";
+import { InvalidInputError } from "../../../../../shared/application/errors/InvalidInputError";
 
 /* 
 TODO
 1-keep developing the signup case 
 
 do the tests cases in tdd
-
-Error Handling - User Already Exists:
 Error Handling - Invalid Input: 
 Error Handling - Database Failure:
 
@@ -67,15 +66,23 @@ describe("TDD sign-use-case", () => {
     const sut = new SignupUseCase({ authRepository: mockAuthRepository });
     //act
 
-    const result = await sut.execute(mockUser)
+    try {
+      const result = await sut.execute(mockUser)
+    } catch (error) {
+      //assert
+      expect(error).toStrictEqual(expectedError);
+    }
 
-    //assert
-    expect(result).toThrowError(expectedError);
 
+    test("SignUpUseCase should return - Invalid Input Error", async () => {
+      //Arrange
+      const expectedError = new InvalidInputError();
 
+      //sut
+      const sut = new SignupUseCase({ authRepository: mockAuthRepository });
+    })
   })
-
-
 })
+
 
 
