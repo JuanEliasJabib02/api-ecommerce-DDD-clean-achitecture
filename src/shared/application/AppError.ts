@@ -11,7 +11,7 @@ export class AppError extends Error {
     this.message = message;
     this.isOperational = isOperational;
 
-    Error.captureStackTrace(this);
+    Error.captureStackTrace(this, this.constructor);
   }
 }
 

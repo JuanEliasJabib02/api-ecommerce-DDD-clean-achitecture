@@ -11,7 +11,7 @@ export async function GlobalErrorHandler(ctx: Context, next: Next) {
 
     if (err instanceof AppError) {
       /* Handle operationals errors for the client */
-      console.log("is operational")
+      console.log("[GLOBAL ERROR HANDLER]", err.stack)
       ctx.status = err.statusCode || 500;
       ctx.body = { error: err.message };
     }

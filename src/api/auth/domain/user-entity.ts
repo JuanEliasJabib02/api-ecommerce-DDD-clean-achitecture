@@ -1,4 +1,4 @@
-export interface User {
+export interface UserEntity {
   id: string;
   name: string;
   email: string;
@@ -10,12 +10,12 @@ export interface User {
 }
 
 
-enum userStatus {
-  ACTIVE,
-  INACTIVE
+export enum userStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE"
 }
 
-enum userRole {
-  USER,
-  ADMIN
+export enum userRole {
+  USER = "USER",
+  ADMIN = "ADMIN",
 }
