@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString, isEmail, isNumber } from 'class-validator';
 
+//TODO THIS DTO IS NOT WORKING @IS EMAIl fix it 
 export class SignUpDto {
   @IsString()
   @IsNotEmpty()
