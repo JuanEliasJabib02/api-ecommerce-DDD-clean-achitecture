@@ -4,7 +4,7 @@ import app from "./shared/infrastructure/app";
 import { database } from "./shared/infrastructure/dependencies/container";
 import logger from "./shared/infrastructure/utils/logger";
 
-const port: number = Number(process.env.PORT) || 4000;
+const port: number = Number(process.env.PORT) || 4001;
 
 const initServer = async (port: number, database: Database): Promise<void> => {
 

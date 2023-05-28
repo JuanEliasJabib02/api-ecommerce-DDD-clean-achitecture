@@ -11,10 +11,11 @@ const container = createContainer({
 container.register({
   authController: asClass(AuthController).singleton(),
   signupUseCase: asClass(SignupUseCase).singleton(),
-  authRepository: asClass(PrismaAuthRepository).singleton()
+  authRepository: asClass(PrismaAuthRepository).singleton(),
 
 });
 
 export const authController = container.resolve<AuthController>("authController")
 export const signupUseCase = container.resolve<SignupUseCase>("signupUseCase")
 export const authRepository = container.resolve<AuthRepository>("authRepository")
+

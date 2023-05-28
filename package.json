@@ -40,6 +40,7 @@
     "awilix": "^8.0.1",
     "awilix-koa": "^9.0.0",
     "axios": "^1.4.0",
+    "class-validator": "^0.14.0",
     "install": "^0.13.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
@@ -49,10 +50,5 @@
     "npm": "^9.6.6",
     "supertest": "^6.3.3",
     "winston": "^3.8.2"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "/node_modules"
-    ]
   }
 }

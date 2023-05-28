@@ -1,12 +1,11 @@
 export interface UserEntity {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   role: userRole;
   status: userStatus;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 

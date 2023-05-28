@@ -1,7 +1,7 @@
 import { Context } from "vm";
 import { DiscordNotification } from "./discord-notifications";
 import { Next } from "koa";
-import { AppError } from "../../../application/AppError";
+import { AppError } from "../../../domain/AppError";
 
 
 export async function GlobalErrorHandler(ctx: Context, next: Next) {

@@ -1,7 +1,8 @@
 
 import { AuthRepository } from "../../../domain/auth-repository";
 import { UserEntity } from "../../../domain/user-entity";
-import { UserAlreadyExistError } from "./errors/error-user-already-exist";
+import { UserAlreadyExistError } from "../../../domain/error-user-already-exist";
+import { SignUpDto } from "../../../infrastructure/web/controller/dto/sign-up-dto";
 
 type SignupUseCaseDependencies = {
   authRepository: AuthRepository;
@@ -9,6 +10,7 @@ type SignupUseCaseDependencies = {
 
 export class SignupUseCase {
   private authRepository: AuthRepository
+
   constructor({ authRepository }: SignupUseCaseDependencies) {
     this.authRepository = authRepository
   }

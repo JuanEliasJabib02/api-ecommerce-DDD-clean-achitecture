@@ -1,4 +1,4 @@
-import { AppError } from "../../../../../../shared/application/AppError";
+import { AppError } from "../../../shared/domain/AppError";
 
 export class UserAlreadyExistError extends AppError {
   constructor() {

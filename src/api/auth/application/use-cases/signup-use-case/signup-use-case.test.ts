@@ -1,40 +1,35 @@
 import { SignupUseCase } from "./signup-use-case"
 import { UserEntity, userRole, userStatus } from "../../../domain/user-entity";
 import { AuthRepository } from "../../../domain/auth-repository";
-import { UserAlreadyExistError } from "./errors/error-user-already-exist";
-import { InvalidInputError } from "../../../../../shared/application/errors/InvalidInputError";
+import { UserAlreadyExistError } from "../../../domain/error-user-already-exist";
+import { InvalidInputError } from "../../../../../shared/domain/InvalidInputError";
 
 /* 
-TODO
-1-keep developing the signup case 
-
 do the tests cases in tdd
 Error Handling - Invalid Input: 
 Error Handling - Database Failure:
 
-
  */
-
 
 describe("TDD sign-use-case", () => {
   test("signupUseCase should return a created user", async () => {
-
     //Arrange
     const mockUser: UserEntity = {
       id: "1",
-      name: "John Doe",
+      firstName: "John Doe",
+      lastName: "Lebron",
       email: "john.doe@example.com",
       password: "password123",
       role: userRole.USER,
       status: userStatus.ACTIVE,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     };
     const expected: UserEntity = mockUser
     const mockAuthRepository: AuthRepository = {
       signup: jest.fn().mockResolvedValue(expected),
       findByEmail: jest.fn().mockResolvedValue(null),
     };
+
+
     /* script under test */
     const sut = new SignupUseCase({ authRepository: mockAuthRepository });
     //act
@@ -49,13 +44,12 @@ describe("TDD sign-use-case", () => {
     //Arrange
     const mockUser: UserEntity = {
       id: "1",
-      name: "John Doe",
+      firstName: "John Doe",
+      lastName: "Lebron",
       email: "john.doe@example.com",
       password: "password123",
       role: userRole.USER,
       status: userStatus.ACTIVE,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     };
     const expectedError: UserAlreadyExistError = new UserAlreadyExistError()
     const mockAuthRepository: AuthRepository = {
@@ -73,14 +67,39 @@ describe("TDD sign-use-case", () => {
       expect(error).toStrictEqual(expectedError);
     }
 
+  })
 
-    test("SignUpUseCase should return - Invalid Input Error", async () => {
-      //Arrange
-      const expectedError = new InvalidInputError();
+  test("SignUpUseCase should return invalid input error", async () => {
 
-      //sut
-      const sut = new SignupUseCase({ authRepository: mockAuthRepository });
-    })
+
+    //Arrange
+    const mockUser: UserEntity = {
+      id: "1",
+      firstName: "John Doe",
+      lastName: "Lebron",
+      email: "john.doe@example.com",
+      password: "password123",
+      role: userRole.USER,
+      status: userStatus.ACTIVE,
+    };
+
+    const expectedError = new InvalidInputError();
+
+    const mockAuthRepository: AuthRepository = {
+      signup: jest.fn().mockResolvedValue(expectedError),
+      findByEmail: jest.fn().mockResolvedValue(null),
+    };
+    //sut
+    const sut = new SignupUseCase({ authRepository: mockAuthRepository });
+
+    //act
+    try {
+      const result = await sut.execute(mockUser);
+    }
+    catch (error) {
+      //assert
+      expect(error).toStrictEqual(expectedError);
+    }
   })
 })
 

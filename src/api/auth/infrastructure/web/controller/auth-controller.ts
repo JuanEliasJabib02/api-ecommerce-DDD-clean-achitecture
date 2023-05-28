@@ -1,17 +1,7 @@
 import { Context, Next } from 'koa';
 import { SignupUseCase } from '../../../application/use-cases/signup-use-case/signup-use-case';
-import { UserEntity, userRole, userStatus } from "../../../domain/user-entity";
-
-const mockUser: UserEntity = {
-  id: "1",
-  name: "John Doe",
-  email: "john.doe@example.com",
-  password: "password123",
-  role: userRole.USER,
-  status: userStatus.ACTIVE,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
+import { SignUpDto } from './dto/sign-up-dto';
+import { UserEntity } from '../../../domain/user-entity';
 
 export class AuthController {
   private signupUseCase: SignupUseCase;
@@ -22,8 +12,12 @@ export class AuthController {
 
   async signup(ctx: Context, next: Next): Promise<void> {
     try {
-      const data = mockUser
-      const user = await this.signupUseCase.execute(data)
+
+      const data = ctx.request.body
+      const userDto = new SignUpDto(data) as UserEntity
+
+      console.log(userDto)
+      const user = await this.signupUseCase.execute(userDto)
       ctx.body = user
       ctx.status = 200
       await next()
